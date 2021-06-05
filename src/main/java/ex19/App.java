@@ -36,50 +36,40 @@ public class App {
     public static void main(String[] args) {
         App myApp = new App();
 
+        // Input
         double height = myApp.readHeight();
         double weight = myApp.readWeight();
+
+        // Calculations
         double bmi = myApp.calculateBMI(height, weight);
 
+        // Output
         String outputString = myApp.generateString(bmi);
         myApp.output(outputString);
     }
 
     public double readHeight() {
-        //double number;
-
-        /*
-        while(!in.hasNextDouble()) {
-            System.out.print("Please enter your height in inches: ");
-
-            if () {
-                System.out.printf("Invalid number. Please try again.\n");
-                scan.next();
-            }
-
-            number = in.nextDouble();
-            return number;
-        }*/
-
         System.out.print("Please enter your height in inches: ");
-        while(!in.hasNextInt()) {
-            System.out.printf("Invalid number. Please try again.\n");
+
+        // User can only enter numbers
+        while(!in.hasNextDouble()) {
+            System.out.print("Invalid number. Please try again.\n");
             in.next();
         }
-        double number = in.nextDouble();
 
-        return number;
+        return in.nextDouble();
     }
 
     public double readWeight() {
-
         System.out.print("Please enter your weight in pounds: ");
-        while(!in.hasNextInt()) {
-            System.out.printf("Invalid number. Please try again.\n");
+
+        // User can only enter numbers
+        while(!in.hasNextDouble()) {
+            System.out.print("Invalid number. Please try again.\n");
             in.next();
         }
-        double number = in.nextDouble();
 
-        return number;
+        return in.nextDouble();
     }
 
     public double calculateBMI(double height, double weight) {
@@ -87,13 +77,13 @@ public class App {
     }
 
     public String generateString(double bmi) {
-        String str1 = String.format("Your BMI is %.1f", bmi);
-        String str2 = null;
+        String str1 = String.format("Your BMI is %.1f.\n", bmi);
+        String str2;
 
         if (bmi < 18.5) {
             str2 = "You are underweight. You should see your doctor.";
         } else if (bmi < 25) {
-            str2 = "Your weight is normal.";
+            str2 = "You are within the ideal weight range.";
         } else {
             str2 = "You are overweight. You should see your doctor.";
         }

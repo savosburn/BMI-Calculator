@@ -50,6 +50,7 @@ public class App {
     }
 
     public double calculateBMI(double height, double weight) {
+
         return (weight / (height * height)) * 703;
     }
 
